@@ -1,0 +1,51 @@
+
+<div
+ class="alert alert-info"
+ *ngIf="!pais; else divPais"
+ >
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+   <div *ngFor="let item of pais" class="container-fluid animate__animated animate__fadeInRight">
+    <div class="row">
+        <div class="col-12">
+            <h1>Pais:<small>{{item.name.common}}</small></h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <h3>Bandera</h3>
+            <img class="img-thumbnail" [src]="item.flags.png" alt="">
+        </div>
+
+        <div class="col">
+            <h3>Información</h3>
+            <ul class="list-group">
+                <li class="list-group item">
+                    <strong>Población</strong> {{item.population | number}}
+                </li>
+                <li class="list-group item">
+                    <strong>Código numérico</strong> {{item.ccn3 | number}}
+                </li>
+                <li class="list-group item">
+                    <strong>Abreviatura</strong> {{item.cca2}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <h3>Traducciones</h3>
+    <div class="row">
+        <div class="col">
+            <span class="badge bg-primary mx-1">{{item.translations.deu.common}}</span>
+            <span class="badge bg-primary mx-1">{{item.translations.ara.common}}</span>
+            <span class="badge bg-primary mx-1">{{item.translations.deu.common}}</span>
+            <span class="badge bg-primary mx-1">{{item.translations.ces.common}}</span>
+            <span class="badge bg-primary mx-1">{{item.translations.jpn.common}}</span>
+            <span class="badge bg-primary mx-1">{{item.translations.est.common}}</span>
+            <span class="badge bg-primary mx-1">{{item.translations.fin.common}}</span>
+        </div>
+    </div>
+   </div>
+</ng-template>
